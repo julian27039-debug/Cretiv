@@ -1,0 +1,440 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Lian Creative</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap">
+<style>
+/* Layout: satu halaman, daftar harga bergaya menu (baris bertitik), bidang abu-abu terang dan krem berselang-seling */
+:root{
+  --cream:#f4eee2;
+  --cream-deep:#ebe2d0;
+  --gray:#e6e6e3;
+  --gray-soft:#f0f0ee;
+  --ink:#2c2b29;
+  --ink-soft:#6a665f;
+  --accent:#8b7656;
+  --line:#cfc8b9;
+  --display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--gray-soft);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:72px}
+.band.cream{background:var(--cream)}
+.band.gray{background:var(--gray)}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 14px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.08;margin:0;text-wrap:balance}
+h1{font-size:clamp(44px,8vw,84px);letter-spacing:-.01em}
+h2{font-size:clamp(32px,5vw,48px)}
+h3{font-size:28px}
+p{margin:0}
+
+/* header */
+header{background:var(--cream);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:26px;font-weight:600;letter-spacing:.02em;text-decoration:none}
+.brand span{color:var(--accent);font-style:italic;font-weight:500}
+nav{display:flex;gap:28px;font-size:14px}
+nav a{text-decoration:none;color:var(--ink-soft);padding-block:4px;border-bottom:1px solid transparent}
+nav a:hover,nav a:focus-visible{color:var(--ink);border-bottom-color:var(--accent);outline:none}
+
+/* hero */
+.hero{background:var(--cream);padding-block:72px 84px}
+.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end}
+.hero p.lead{font-size:18px;color:var(--ink-soft);max-width:46ch;margin-top:26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-block;font:600 14px/1 var(--sans);letter-spacing:.04em;padding:16px 26px;border:1px solid var(--ink);background:var(--ink);color:var(--cream);text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover,.btn:focus-visible{background:transparent;color:var(--ink);outline:none}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--ink);color:var(--cream)}
+.hero-side{background:var(--gray);padding:28px;border:1px solid var(--line)}
+.hero-side h3{font-size:22px;margin-bottom:14px}
+.hero-side dl{margin:0;display:grid;gap:12px}
+.hero-side dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-side dd{margin:0;font-family:var(--display);font-size:24px;line-height:1.1}
+
+/* price list */
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:44px}
+.head p{color:var(--ink-soft);max-width:44ch}
+.menu{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.menu li{display:grid;grid-template-columns:1fr auto;gap:8px 32px;padding:30px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.menu .name{font-family:var(--display);font-size:clamp(28px,4vw,38px);font-weight:500;line-height:1.1}
+.menu .desc{grid-column:1;color:var(--ink-soft);max-width:52ch;font-size:15px}
+.menu .price{grid-column:2;grid-row:1 / span 2;text-align:right;font-family:var(--display);font-size:clamp(24px,3.4vw,32px);white-space:nowrap;font-variant-numeric:tabular-nums}
+.menu .price small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:600}
+.note{margin-top:22px;font-size:14px;color:var(--ink-soft)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px;counter-reset:s}
+.step{border-top:1px solid var(--ink);padding-top:18px}
+.step::before{counter-increment:s;content:"Langkah " counter(s);display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+.step h3{font-size:26px;margin-bottom:8px}
+.step p{color:var(--ink-soft);font-size:15px}
+
+/* order */
+.order{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.order p.sub{color:var(--ink-soft);margin-top:18px;max-width:40ch}
+form{display:grid;gap:18px;background:var(--cream);padding:32px;border:1px solid var(--line)}
+label{display:grid;gap:6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+input,select,textarea{font:400 16px/1.5 var(--sans);color:var(--ink);background:var(--gray-soft);border:1px solid var(--line);padding:12px 14px;border-radius:0;width:100%;letter-spacing:0;text-transform:none}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+textarea{min-height:110px;resize:vertical}
+.out{display:none;background:var(--gray);border:1px dashed var(--accent);padding:16px;font-size:15px;white-space:pre-wrap;color:var(--ink)}
+.out.show{display:block}
+.status{font-size:14px;color:var(--accent);min-height:1.4em}
+
+footer{background:var(--ink);color:var(--cream-deep);padding-block:36px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+.foot .brand{color:var(--cream)}
+.foot small{font-size:13px;opacity:.75}
+
+@media (max-width:820px){
+  .hero-grid,.head,.order{grid-template-columns:1fr;gap:32px}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .band{padding-block:56px}
+  .hero{padding-block:48px 56px}
+  nav{gap:20px}
+}
+@media (max-width:520px){
+  .menu li{grid-template-columns:1fr}
+  .menu .price{grid-column:1;grid-row:auto;text-align:left;margin-top:6px}
+  form{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* ===== gerak dan tambahan ===== */
+:root{--ink-2:#3b3935}
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);z-index:-1;pointer-events:none}
+.b1{width:420px;height:420px;right:-80px;top:-120px;background:radial-gradient(circle at 30% 30%,#d9c9a6,rgba(217,201,166,0) 70%);animation:drift1 16s ease-in-out infinite alternate}
+.b2{width:360px;height:360px;left:-120px;bottom:-140px;background:radial-gradient(circle at 60% 40%,#cfd0cc,rgba(207,208,204,0) 70%);animation:drift2 19s ease-in-out infinite alternate}
+.b3{width:200px;height:200px;left:48%;top:30px;background:radial-gradient(circle,rgba(139,118,86,.35),rgba(139,118,86,0) 70%);animation:drift3 13s ease-in-out infinite alternate}
+.ring{position:absolute;right:6%;bottom:40px;width:150px;height:150px;border:1px solid var(--accent);border-radius:50%;opacity:.45;z-index:-1;animation:spin 30s linear infinite}
+.ring::after{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--accent)}
+@keyframes drift1{to{transform:translate(-60px,70px) scale(1.15)}}
+@keyframes drift2{to{transform:translate(90px,-50px) scale(1.2)}}
+@keyframes drift3{to{transform:translate(-120px,60px) scale(.8)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero .eyebrow,.hero h1,.hero p.lead,.hero .btns{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero h1{animation-delay:.1s}.hero p.lead{animation-delay:.25s}.hero .btns{animation-delay:.4s}
+.hero-side{animation:rise .9s .35s cubic-bezier(.2,.7,.2,1) both,bob 6s 1.3s ease-in-out infinite;backdrop-filter:blur(6px);background:rgba(230,230,227,.78)}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.rot{display:inline-block;height:1.1em;overflow:hidden;vertical-align:bottom;color:var(--accent);font-style:italic}
+.rot span{display:block;height:1.1em;line-height:1.1}
+.rot-in{display:block}
+@keyframes swap{0%,20%{transform:translateY(0)}25%,45%{transform:translateY(-1.1em)}50%,70%{transform:translateY(-2.2em)}75%,95%{transform:translateY(-3.3em)}100%{transform:translateY(-4.4em)}}
+.rot .rot-in{animation:swap 10s cubic-bezier(.7,0,.2,1) infinite}
+
+.ticker{background:var(--ink);color:var(--cream);overflow:hidden;white-space:nowrap;padding-block:16px;font-family:var(--display);font-size:26px;font-style:italic}
+.ticker-track{display:inline-flex;gap:0;animation:marq 28s linear infinite;will-change:transform}
+.ticker-track span{padding-right:36px}
+.ticker-track b{color:var(--accent);font-style:normal;padding-right:36px;font-weight:500}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+.menu li{position:relative;transition:padding .35s ease;background:linear-gradient(90deg,var(--cream),var(--cream)) no-repeat left/0 100%;transition:background-size .5s cubic-bezier(.2,.7,.2,1),padding .35s}
+.menu li:hover{background-size:100% 100%;padding-inline:18px}
+.menu .name::after{content:" \2192";display:inline-block;opacity:0;transform:translateX(-8px);transition:.35s;color:var(--accent)}
+.menu li:hover .name::after{opacity:1;transform:none}
+.step{transition:transform .35s,border-color .35s}
+.step:hover{transform:translateY(-6px);border-color:var(--accent)}
+
+.admin{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:28px;padding:18px 20px;background:var(--cream);border:1px solid var(--line)}
+.admin .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;width:100%}
+.admin .num{font-family:var(--display);font-size:30px;line-height:1;user-select:all;font-variant-numeric:tabular-nums}
+.wa{display:inline-flex;align-items:center;gap:8px;font:600 14px/1 var(--sans);letter-spacing:.03em;padding:14px 20px;background:#2f6b4f;color:#fff;text-decoration:none;border:1px solid #2f6b4f;transition:background .2s,color .2s}
+.wa:hover,.wa:focus-visible{background:transparent;color:#2f6b4f;outline:none}
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;width:58px;height:58px;border-radius:50%;background:#2f6b4f;color:#fff;display:grid;place-items:center;text-decoration:none;box-shadow:0 8px 24px rgba(44,43,41,.25)}
+.fab svg{width:28px;height:28px;fill:currentColor}
+.fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #2f6b4f;animation:ping 2.4s ease-out infinite}
+@keyframes ping{from{transform:scale(1);opacity:.7}to{transform:scale(1.7);opacity:0}}
+.nav .login{font-size:13px;font-weight:600;letter-spacing:.05em;padding:10px 20px;border:1px solid var(--ink);text-decoration:none;color:var(--ink);transition:.2s}
+.nav .login:hover,.nav .login:focus-visible{background:var(--ink);color:var(--cream);outline:none}
+.nav-r{display:flex;align-items:center;gap:28px}
+
+/* ===== halaman masuk ===== */
+.auth{min-height:calc(100vh - 0px);display:grid;grid-template-columns:1fr 1fr;background:var(--cream)}
+.auth-art{position:relative;overflow:hidden;background:var(--ink);color:var(--cream);padding:48px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate}
+.auth-art .brand{color:var(--cream)}
+.auth-art h2{font-size:clamp(36px,4.6vw,58px);max-width:12ch;margin-block:auto}
+.auth-art h2 em{color:#d9c9a6}
+.auth-art p.cap{color:#bdb6a6;font-size:14px;max-width:34ch}
+.sh{position:absolute;z-index:-1;border-radius:50%}
+.s1{width:320px;height:320px;right:-90px;top:-70px;background:radial-gradient(circle at 35% 35%,rgba(217,201,166,.55),rgba(217,201,166,0) 70%);animation:drift1 14s ease-in-out infinite alternate}
+.s2{width:260px;height:260px;left:-60px;bottom:90px;border:1px solid rgba(217,201,166,.5);animation:spin 40s linear infinite}
+.s2::after{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#d9c9a6}
+.s3{width:140px;height:140px;right:18%;bottom:-40px;background:radial-gradient(circle,rgba(230,230,227,.3),rgba(230,230,227,0) 70%);animation:drift3 11s ease-in-out infinite alternate}
+.auth-form{display:flex;align-items:center;justify-content:center;padding:48px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px))}
+.card{width:100%;max-width:420px;display:grid;gap:18px;animation:rise .7s both}
+.card h1{font-size:clamp(40px,5vw,54px)}
+.card .sub{color:var(--ink-soft)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
+.row label{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:14px;font-weight:500}
+.row input[type=checkbox]{width:auto;accent-color:var(--accent)}
+.pw{position:relative}
+.pw input{padding-right:74px}
+.pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);cursor:pointer;padding:8px}
+.card .err{color:#9a3b2e;font-size:14px;min-height:1.3em}
+.card .info{background:var(--gray);border:1px dashed var(--accent);padding:14px 16px;font-size:14px;color:var(--ink)}
+.back{font-size:14px;color:var(--ink-soft)}
+[data-view]{display:none}
+[data-view].on{display:block}
+[data-view="masuk"].on{display:block}
+
+@media (max-width:820px){
+  .auth{grid-template-columns:1fr}
+  .auth-art{padding:28px 24px 36px;min-height:260px}
+  .auth-art h2{margin-block:28px 18px}
+  .nav-r{gap:16px}
+  .ticker{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .blob,.ring,.rot-in,.ticker-track,.sh,.hero-side,.fab::before{animation:none!important}
+  .hero .eyebrow,.hero h1,.hero p.lead,.hero .btns,.card{animation:none!important}
+  .ticker{overflow-x:auto}
+}
+.brand{display:inline-flex;align-items:center;gap:10px}
+.brand b{font-weight:600}
+.logo{width:40px;height:40px;flex:none;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.brand:hover .logo{transform:rotate(180deg)}
+.foot .brand span,.auth-art .brand span{color:#d9c9a6}
+.hero-logo{display:none}
+@media (prefers-reduced-motion:reduce){.logo{transition:none}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="logo" viewBox="0 0 44 44">
+  <circle cx="22" cy="22" r="19.5" fill="none" style="stroke:var(--accent)" stroke-width="1.5" stroke-dasharray="104 19" stroke-linecap="round" transform="rotate(-70 22 22)"/>
+  <path d="M15.500 10.500v21.500h13.500" fill="none" stroke="currentColor" stroke-width="3.200" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M27.500 9.500l1.300 3.200 3.200 1.300-3.200 1.300-1.300 3.200-1.300-3.200-3.200-1.300 3.200-1.300z" style="fill:var(--accent)"/>
+</symbol></defs></svg>
+<div data-view="home" class="on" id="home">
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#atas"><svg class="logo" viewBox="0 0 44 44" aria-hidden="true"><use href="#logo"/></svg><b>Lian <span>Creative</span></b></a>
+    <div class="nav-r">
+    <nav aria-label="Navigasi utama">
+      <a href="#layanan">Layanan</a>
+      <a href="#cara-pesan">Cara pesan</a>
+      <a href="#pesan">Pesan</a>
+    </nav>
+    <a class="login" href="#masuk">Masuk</a>
+    </div>
+  </div>
+</header>
+
+<main id="atas">
+  <section class="hero">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="ring"></span>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Studio kreatif digital</p>
+        <h1>Ide jadi <span class="rot" aria-label="website, desain, video, artikel"><span class="rot-in" aria-hidden="true"><span>website.</span><span>desain.</span><span>video.</span><span>artikel.</span><span>website.</span></span></span></h1>
+        <p class="lead">Lian Creative mengerjakan website, desain Canva, edit video, dan artikel. Harga jelas sejak awal dan bisa disesuaikan dengan anggaranmu.</p>
+        <div class="btns">
+          <a class="btn" href="#pesan">Pesan sekarang</a>
+          <a class="btn ghost" href="#layanan">Lihat harga</a>
+        </div>
+      </div>
+      <aside class="hero-side" aria-label="Ringkasan harga">
+        <h3>Mulai dari</h3>
+        <dl>
+          <div><dt>Desain Canva</dt><dd>Rp15.000</dd></div>
+          <div><dt>Edit video</dt><dd>Rp25.000</dd></div>
+          <div><dt>Artikel</dt><dd>Rp25.000</dd></div>
+          <div><dt>Website</dt><dd>Rp100.000</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">
+    <span>Website</span><b>✦</b><span>Desain Canva</span><b>✦</b><span>Edit Video</span><b>✦</b><span>Menulis Artikel</span><b>✦</b>
+    <span>Website</span><b>✦</b><span>Desain Canva</span><b>✦</b><span>Edit Video</span><b>✦</b><span>Menulis Artikel</span><b>✦</b>
+  </div></div>
+
+  <section class="band gray" id="layanan">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Layanan dan harga</p>
+          <h2>Empat layanan, satu standar kerja.</h2>
+        </div>
+        <p>Harga berupa kisaran. Angka akhir ditentukan dari tingkat kerumitan dan jumlah pekerjaan, lalu disepakati sebelum mulai.</p>
+      </div>
+      <ul class="menu">
+        <li>
+          <span class="name">Jasa Membuat Website</span>
+          <span class="desc">Website untuk usaha, portofolio, atau acara. Tampilan rapi dan nyaman dibuka dari ponsel.</span>
+          <span class="price"><small>Kisaran</small>Rp100.000 – 500.000</span>
+        </li>
+        <li>
+          <span class="name">Desain Canva</span>
+          <span class="desc">Poster, feed dan story media sosial, menu, undangan, dan materi promosi lain.</span>
+          <span class="price"><small>Kisaran</small>Rp15.000 – 100.000</span>
+        </li>
+        <li>
+          <span class="name">Edit Video</span>
+          <span class="desc">Potong, susun, tambah teks dan musik untuk konten media sosial atau dokumentasi.</span>
+          <span class="price"><small>Kisaran</small>Rp25.000 – 150.000</span>
+        </li>
+        <li>
+          <span class="name">Menulis Artikel</span>
+          <span class="desc">Artikel blog, deskripsi produk, dan tulisan lain dengan bahasa yang jelas dan enak dibaca.</span>
+          <span class="price"><small>Kisaran</small>Rp25.000 – 100.000</span>
+        </li>
+      </ul>
+      <p class="note">Kirim detail pekerjaanmu, nanti kami balas dengan harga pasti.</p>
+    </div>
+  </section>
+
+  <section class="band cream" id="cara-pesan">
+    <div class="wrap">
+      <p class="eyebrow">Cara pesan</p>
+      <h2>Tiga langkah sampai hasil di tanganmu.</h2>
+      <div class="steps">
+        <div class="step"><h3>Kirim brief</h3><p>Ceritakan kebutuhanmu, contoh yang kamu suka, dan batas waktunya.</p></div>
+        <div class="step"><h3>Sepakati harga</h3><p>Kami hitung harga dalam kisaran di atas dan menyampaikannya sebelum pengerjaan.</p></div>
+        <div class="step"><h3>Terima hasil</h3><p>Hasil dikirim sesuai jadwal. Revisi dibicarakan bersama agar hasilnya pas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band gray" id="pesan">
+    <div class="wrap order">
+      <div>
+        <p class="eyebrow">Pesan</p>
+        <h2>Tulis kebutuhanmu, kami siapkan pesannya.</h2>
+        <p class="sub">Isi formulir, lalu kirim langsung ke admin lewat WhatsApp atau salin pesannya.</p>
+        <div class="admin">
+          <span class="lbl">Nomor admin</span>
+          <span class="num" id="nomor">0896-6780-9564</span>
+          <a class="wa" id="wa-admin" href="https://wa.me/6289667809564" target="_blank" rel="noopener">Chat WhatsApp</a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <label for="nama">Nama
+          <input id="nama" type="text" autocomplete="name" placeholder="Nama kamu">
+        </label>
+        <label for="layanan-pilih">Layanan
+          <select id="layanan-pilih">
+            <option>Jasa Membuat Website (Rp100.000 – 500.000)</option>
+            <option>Desain Canva (Rp15.000 – 100.000)</option>
+            <option>Edit Video (Rp25.000 – 150.000)</option>
+            <option>Menulis Artikel (Rp25.000 – 100.000)</option>
+          </select>
+        </label>
+        <label for="detail">Detail pekerjaan
+          <textarea id="detail" placeholder="Contoh: website untuk toko kue, 3 halaman, selesai dalam seminggu"></textarea>
+        </label>
+        <button class="btn" type="submit">Susun pesan</button>
+        <div class="out" id="out" aria-live="polite"></div>
+        <a class="wa" id="wa-kirim" href="https://wa.me/6289667809564" target="_blank" rel="noopener" hidden>Kirim lewat WhatsApp ke admin</a>
+        <button class="btn ghost" type="button" id="salin" hidden>Salin pesan</button>
+        <div class="status" id="status" role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="brand"><svg class="logo" viewBox="0 0 44 44" aria-hidden="true"><use href="#logo"/></svg><b>Lian <span>Creative</span></b></span>
+    <small>Website · Desain Canva · Edit Video · Artikel · Admin 0896-6780-9564</small>
+  </div>
+</footer>
+<a class="fab" href="https://wa.me/6289667809564" target="_blank" rel="noopener" aria-label="Chat admin lewat WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.1 14.4L2.7 21.3l4.5-1.2A9.5 9.5 0 1 0 12 2.5Zm0 1.8a7.7 7.7 0 1 1-4 14.300l-.3-.2-2.600.7.700-2.500-.2-.3A7.700 7.700 0 0 1 12 4.300Zm-3 3.200c-.2 0-.5.1-.7.4-.3.300-1 1-1 2.300s1 2.700 1.100 2.900c.1.200 2 3.100 4.900 4.200 2.400.9 2.900.7 3.400.7.500-.1 1.700-.7 1.900-1.400.2-.7.2-1.200.2-1.400-.1-.1-.3-.2-.6-.3l-1.800-.9c-.2-.1-.4-.1-.6.100l-.8 1c-.1.200-.3.200-.5.100-.3-.1-1.100-.4-2.100-1.300-.8-.7-1.300-1.500-1.400-1.800-.1-.2 0-.4.100-.5l.4-.5.300-.4v-.5l-.8-2c-.2-.5-.4-.5-.6-.5H9Z"/></svg></a>
+</div>
+
+<div data-view="masuk" id="masuk-view">
+  <div class="auth">
+    <aside class="auth-art">
+      <span class="sh s1"></span><span class="sh s2"></span><span class="sh s3"></span>
+      <a class="brand" href="#atas"><svg class="logo" viewBox="0 0 44 44" aria-hidden="true"><use href="#logo"/></svg><b>Lian <span>Creative</span></b></a>
+      <h2>Selamat datang <em>kembali.</em></h2>
+      <p class="cap">Masuk untuk memantau pesanan website, desain, video, dan artikelmu.</p>
+    </aside>
+    <div class="auth-form">
+      <form class="card" id="login" novalidate style="background:none;border:0;padding:0">
+        <div>
+          <p class="eyebrow">Akun Lian Creative</p>
+          <h1>Masuk</h1>
+          <p class="sub" style="margin-top:10px">Gunakan email atau nomor WhatsApp yang kamu pakai saat memesan.</p>
+        </div>
+        <label for="akun">Email atau nomor WhatsApp
+          <input id="akun" type="text" autocomplete="username" placeholder="nama@email.com">
+        </label>
+        <label for="sandi">Kata sandi
+          <span class="pw"><input id="sandi" type="password" autocomplete="current-password" placeholder="Kata sandi"><button type="button" id="lihat" aria-label="Tampilkan kata sandi">Lihat</button></span>
+        </label>
+        <div class="row">
+          <label for="ingat"><input id="ingat" type="checkbox">Ingat saya</label>
+          <span>Lupa sandi? Hubungi admin 0896-6780-9564</span>
+        </div>
+        <div class="err" id="err" role="alert"></div>
+        <button class="btn" type="submit">Masuk</button>
+        <div class="info" id="info" hidden>Fitur masuk belum terhubung ke server, jadi akun belum bisa diverifikasi. Untuk memesan atau menanyakan pesanan, hubungi admin lewat WhatsApp.</div>
+        <a class="back" href="#atas">&larr; Kembali ke beranda</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NO='6289667809564';
+  var home=document.getElementById('home'),masuk=document.getElementById('masuk-view');
+  function route(){
+    var m=location.hash==='#masuk';
+    home.classList.toggle('on',!m);masuk.classList.toggle('on',m);
+    document.title=m?'Masuk | Lian Creative':'Lian Creative';
+    if(m)window.scrollTo(0,0);
+    else if(location.hash&&location.hash!=='#atas'){var t=document.getElementById(location.hash.slice(1));if(t)t.scrollIntoView();}
+    else window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',route);route();
+
+  var form=document.getElementById('form'),out=document.getElementById('out'),
+      copy=document.getElementById('salin'),kirim=document.getElementById('wa-kirim'),
+      status=document.getElementById('status'),msg='';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('nama').value.trim()||'(nama)',
+        l=document.getElementById('layanan-pilih').value,
+        d=document.getElementById('detail').value.trim()||'(detail pekerjaan)';
+    msg='Halo Lian Creative, saya '+n+' ingin memesan layanan '+l+'.\n\nDetail: '+d+'\n\nMohon info harga dan estimasi waktunya. Terima kasih.';
+    out.textContent=msg;out.classList.add('show');
+    copy.hidden=false;kirim.hidden=false;
+    kirim.href='https://wa.me/'+NO+'?text='+encodeURIComponent(msg);
+    status.textContent='';
+  });
+  copy.addEventListener('click',function(){
+    function fallback(){
+      var r=document.createRange();r.selectNodeContents(out);
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+      status.textContent='Pesan terpilih. Tekan salin di perangkatmu.';
+    }
+    try{navigator.clipboard.writeText(msg).then(function(){status.textContent='Pesan tersalin.';},fallback);}catch(err){fallback();}
+  });
+
+  var lg=document.getElementById('login'),err=document.getElementById('err'),info=document.getElementById('info'),
+      sandi=document.getElementById('sandi'),lihat=document.getElementById('lihat');
+  lihat.addEventListener('click',function(){
+    var show=sandi.type==='password';sandi.type=show?'text':'password';
+    lihat.textContent=show?'Sembunyi':'Lihat';
+    lihat.setAttribute('aria-label',show?'Sembunyikan kata sandi':'Tampilkan kata sandi');
+  });
+  lg.addEventListener('submit',function(e){
+    e.preventDefault();info.hidden=true;
+    var a=document.getElementById('akun').value.trim();
+    if(!a){err.textContent='Isi email atau nomor WhatsApp.';return;}
+    if(sandi.value.length<6){err.textContent='Kata sandi minimal 6 karakter.';return;}
+    err.textContent='';info.hidden=false;
+  });
+})();
+</script>
+
+</body></html>
